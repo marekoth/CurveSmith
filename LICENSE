@@ -1,0 +1,32 @@
+# RYZENLABS PROPRIETARY FREEWARE LICENSE
+
+Copyright (c) 2026 RyzenLabs. All rights reserved.
+
+This software is provided as freeware for personal, non-commercial use. By downloading, installing, or using this software, you agree to the following terms:
+
+## 1. Grant of License
+You are granted a limited, non-exclusive, non-transferable license to use the compiled binaries of RyzenLabs solely for personal hardware tuning and diagnostic purposes.
+
+## 2. Restrictions & Intellectual Property
+RyzenLabs contains proprietary algorithms, dynamic state machines, and customized hardware diagnostic heuristics. To protect this intellectual property, you **may not**:
+* Decompile, disassemble, reverse engineer, or attempt to extract the source code, bytecode, or underlying logic of the software.
+* Modify, adapt, or create derivative works based on this software.
+* Monetize, sell, or include this software in any commercial product or service.
+* Tamper with or bypass any internal software protections or telemetry masking.
+
+## 3. Redistribution
+You may share or redistribute the **original, unmodified** setup executable or link to the official repository. You may not upload modified binaries, inject third-party payloads, or distribute the software on platforms that charge users for access.
+
+## 4. Hardware Disclaimer (Assumption of Risk)
+**WARNING:** This software interfaces directly with CPU registers, System Management Units (SMU), and voltage controllers at a kernel level (Ring-0). 
+
+Operating your hardware outside of the manufacturer’s specified limits (including manipulating Curve Optimizer offsets, PBO limits, and static voltage overrides) carries inherent risks, including but not limited to:
+* System instability and data corruption.
+* Accelerated silicon degradation (electromigration).
+* Permanent hardware damage to the CPU, VRMs, or Motherboard.
+* Voiding of manufacturer warranties (AMD, motherboard vendors, etc.).
+
+## 5. Limitation of Liability
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. 
+
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
