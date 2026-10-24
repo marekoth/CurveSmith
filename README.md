@@ -18,7 +18,6 @@ Why RyzenLabs?
     on your silicon's limits quickly—averaging ~30 minutes on an 8-core CPU.
   - Full Desktop Architecture Coverage: Native SMU profiles and tailored
     workloads for:
-      - Zen 2 (Matisse / Ryzen 3000)
       - Zen 3 & Zen 3+ (Vermeer / Ryzen 5000, 5000X3D)
       - Zen 4 (Raphael / Ryzen 7000, 7000X3D)
       - Zen 5 (Granite Ridge / Ryzen 9000, 9000X3D)
@@ -31,7 +30,7 @@ Why RyzenLabs?
     offset as a hard boundary, snaps back to the last verified safe baseline,
     and resumes testing automatically.
   - Architecture-Specific Stress Engines: Binds directly to matching AVX2 /
-    AVX-512 workload binaries (Kagari for Zen 2/3, Kizuna for Zen 4, Komari for
+    AVX-512 workload binaries (Kagari for Zen 3, Kizuna for Zen 4, Komari for
     Zen 5 dual 512-bit) with core affinity pinning and load-shock cycles to
     expose instability instantly.
   - Static Manual OC Mode: Full-control fallback mode for non-X3D silicon to
@@ -56,7 +55,7 @@ How It Works
 Requirements
 
   - OS: Windows 10 / 11 (64-bit)
-  - CPU: AMD Ryzen Desktop Processor (Zen 2 through Zen 5)
+  - CPU: AMD Ryzen Desktop Processor (Zen 3 through Zen 5)
   - Privileges: Administrator rights (required for Ring-0 SMU and MSR
     communication)
   - Driver: PawnIO low-level driver (packaged with the setup, prompts cleanly on
