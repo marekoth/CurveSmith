@@ -1,5 +1,4 @@
-Here is a clean, developer/enthusiast-written README.md you can paste directly
-to GitHub. No buzzwords, no corporate marketing fluff, and no AI clichés.
+
 
 RyzenLabs - Precision PBO & Curve Optimizer Tuner
 
