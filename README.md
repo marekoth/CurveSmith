@@ -3,14 +3,16 @@
 A lightweight, automated Curve Optimizer (CO) calibrator and low-level SMU tuning utility for AMD Ryzen processors.
 
 <p align="center">
-  <img src="Assets/pbo_screen.png" alt="CurveSmith Calibration Dashboard" width="850">
+  <img src="Assets/pbo_screen.png" alt="CurveSmith PBO Optimizer Dashboard" width="900">
 </p>
 
 Instead of spending an entire weekend manually tweaking offsets in BIOS and guessing which core crashed your system, CurveSmith dials in stable, per-core undervolts through direct hardware mailbox calls and targeted single-core stress routines.
 
+---
+
 ## Why CurveSmith?
 
-- **Fast Calibration (~30 Mins for 8 Cores):** Traditional tools brute-force offsets from 0 to -30 step-by-step, taking hours. CurveSmith uses an adaptive search engine that reads CPPC priority and previous core behavior to home in on silicon limits quickly, averaging ~30 minutes on an 8-core CPU.
+- **Fast Calibration (~30 Mins for 8 Cores):** Traditional tools brute-force offsets from 0 to -30 step-by-step, taking hours. CurveSmith uses an adaptive search engine that reads CPPC priority and previous core behavior to home in on silicon limits quickly (~30 minutes on an 8-core CPU; ~10 minutes in fast mode).
 - **Full Desktop Architecture Coverage:** Native SMU profiles and tailored workloads for:
   - Zen 3 & Zen 3+ (Vermeer / Ryzen 5000, 5000X3D)
   - Zen 4 (Raphael / Ryzen 7000, 7000X3D)
@@ -22,28 +24,64 @@ Instead of spending an entire weekend manually tweaking offsets in BIOS and gues
 
 ---
 
-## Features & Modes
+## Interface & Modules
 
-### PBO Calibration & Profile Selection
-Select per-core target modes, profile slots, and test parameters prior to running automated sweeps.
+### 1. PBO Calibration & Target Setup
 
-<p align="center">
-  <img src="Assets/pbo_selection_menu.png" alt="PBO Selection Menu" width="850">
-</p>
-
-### Silicon Quality & CPPC Inspection
-Reads hardware APIC IDs, SMU tables, and fused silicon rankings to prioritize strongest cores during calibration.
+Configure Fmax override targets and execution parameters before initiating the calibration sweep.
 
 <p align="center">
-  <img src="Assets/silicon_quality.png" alt="Silicon Quality Overview" width="850">
+  <img src="Assets/pbo_selection_menu.png" alt="PBO Boost Target Modal" width="750">
 </p>
 
-### Static Manual OC Mode
-Full-control fallback mode for non-X3D silicon to set fixed voltages and all-core frequency targets outside AMD FIT limits.
+- **Target Boost (Fmax) Slider:** Set negative or positive frequency overrides (-200 MHz to +200 MHz).
+- **Predefined PBO Profiles:** Quick-select between Eco Mode (-200 MHz), Stock Boost (0 MHz), Balanced (+100 MHz), and Max Boost (+200 MHz).
+- **Fine Tuning Mode:** Toggle between bounded smart search (~30 min on 8 cores) and 5-step rapid testing (~10 min).
+- **Automated Crash Resilience Engine:** Tracks active state to automatically recover and resume testing upon reboot.
+
+---
+
+### 2. Live PBO Optimizer Dashboard
+
+Real-time telemetry and single-core test execution monitor.
 
 <p align="center">
-  <img src="Assets/manual_oc.png" alt="Manual Overclocking Interface" width="850">
+  <img src="Assets/pbo_screen.png" alt="PBO Optimizer Live Dashboard" width="900">
 </p>
+
+- **Per-Core Clocks & Load:** Tracks active, idle, and C6 sleep states per physical core along with live effective clocks.
+- **Hardware Telemetry:** Direct sensor readouts for Package Temperature (Tctl), Package Power (PPT), and Core Voltage.
+- **Live Test Monitor:** Real-time calibration progress, target core identification, and step-by-step operation log.
+- **Per-Core CO Matrix:** Visual matrix tracking CPPC rank tags (#1 Gold, #2 Silver) and confirmed stable negative offsets.
+
+---
+
+### 3. Silicon Quality & Results Table
+
+Post-calibration report detailing per-core stability limits and fused silicon rating.
+
+<p align="center">
+  <img src="Assets/silicon_quality.png" alt="Silicon Quality & Results" width="900">
+</p>
+
+- **Silicon Tier Classification:** Calculates an overall binning score based on average stable undervolt capability (e.g., Tier 1 Golden Silicon).
+- **Per-Core Audit Table:** Displays CPPC ranking, assigned PBO override, final stable CO offset, and validation state.
+- **Export Options:** One-click clipboard copy (`COPY TABLE`) or raw plain-text report generation (`EXPORT TXT`).
+- **Profile Storage:** 5 hardware profile slots with an option to auto-apply verified offsets on Windows startup.
+
+---
+
+### 4. Static Manual All-Core Overclocking
+
+Dedicated tuning interface for non-X3D processors to test fixed frequencies outside AMD FIT regulation.
+
+<p align="center">
+  <img src="Assets/manual_oc.png" alt="Manual OC Panel" width="900">
+</p>
+
+- **Dual Slider Control:** Direct adjustment of target all-core frequency and core voltage.
+- **Real-Time State Mapping:** Monitors per-core active clocks and sleep states to verify static lock across all threads.
+- **Safety Fallback:** Immediate `RESTORE STOCK` toggle to release hardware overrides back to factory PBO control.
 
 ---
 
@@ -54,6 +92,8 @@ Full-control fallback mode for non-X3D silicon to set fixed voltages and all-cor
 3. **Adaptive Range Refinement:** Narrows the stable margin between known-safe and known-failing offsets using bounded binary steps rather than linear 1-by-1 stepping.
 4. **Permanent Slot Profiles:** Lets you save up to 5 tuning profiles to hardware slots with an option to auto-apply your daily profile on Windows startup.
 
+---
+
 ## Requirements
 
 - **OS:** Windows 10 / 11 (64-bit)
@@ -61,13 +101,17 @@ Full-control fallback mode for non-X3D silicon to set fixed voltages and all-cor
 - **Privileges:** Administrator rights (required for Ring-0 SMU and MSR communication)
 - **Driver:** PawnIO low-level driver (packaged with the setup, prompts cleanly on first launch if missing)
 
+---
+
 ## Installation
 
-1. Download the latest `CurveSmith_Setup.exe` from the Releases section.
+1. Download `CurveSmith_Setup.exe` from the Releases section.
 2. Run the installer with administrator privileges.
-3. Launch CurveSmith. If PawnIO is not installed on the system, the application will guide you through the driver setup.
-4. Select your target boost offset and start calibration.
+3. Launch CurveSmith. If PawnIO is not installed on the system, the application will prompt the one-click driver setup.
+4. Select your target boost offset in the PBO Optimizer tab and start calibration.
+
+---
 
 ## Disclaimer
 
-CurveSmith interacts directly with processor voltage planes and frequency scalers. Modifying hardware parameters outside factory specifications carries inherent risks of instability, data loss, or component degradation. All tuning is performed at your own risk.
+CurveSmith interacts directly
