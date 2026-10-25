@@ -1,27 +1,37 @@
-# END USER LICENSE AGREEMENT (EULA)
+# END-USER LICENSE AGREEMENT (EULA) - CURVESMITH
 
-Copyright (c) 2026 RyzenLabs. All rights reserved.
+Copyright (c) 2026 marekoth (https://github.com/marekoth). All rights reserved.
 
-This software is provided as freeware for personal, non-commercial use. By downloading, installing, or using this software, you agree to the following terms:
+This software is provided as proprietary freeware for personal, non-commercial use only. By downloading, installing, copying, or otherwise using CurveSmith (the "Software"), you agree to be bound by the terms and conditions of this Agreement.
+
+---
 
 ## 1. Grant of License
-You are granted a limited, non-exclusive, non-transferable license to use the Software solely for personal hardware tuning and diagnostic purposes.
+The developer (`marekoth`) grants you a revocable, non-exclusive, non-transferable, limited license to download, install, and execute the Software strictly for personal, non-commercial hardware optimization, tuning, and diagnostic purposes.
 
 ## 2. Intellectual Property & Restrictions
-The Software, including its design, structure, and executable binaries, is the exclusive property of the developer and is protected by international copyright and intellectual property laws. You expressly agree that you **shall not**:
-* Decompile, disassemble, reverse engineer, or otherwise attempt to derive the source code of the Software.
-* Modify, adapt, translate, or create derivative works based upon the Software.
-* Sell, rent, lease, or monetize the Software in any commercial capacity.
-* Circumvent, remove, or alter any software protection mechanisms.
+The Software, including its executable binaries, architecture-specific workloads, algorithms, and interface design, remains the exclusive intellectual property of `marekoth`. 
 
-## 3. Redistribution
-You may freely share or redistribute the original, unmodified setup executable or link to the official repository. You may not repackage the Software, distribute modified versions, or host the Software on platforms that charge users for access.
+You expressly agree that you shall NOT, under any circumstances:
+- Decompile, disassemble, reverse engineer, decrypt, or otherwise attempt to derive or extract the source code of the Software or any of its components.
+- Modify, patch, adapt, translate, merge, or create derivative works based upon the Software.
+- Circumvent, tamper with, bypass, or remove any digital signatures, license restrictions, or security mechanisms within the application.
+- Sublicense, lease, rent, loan, sell, or commercially monetize the Software or bundle it with commercial software products without explicit written permission from the developer.
 
-## 4. Hardware Disclaimer & Assumption of Risk
-The Software allows modification of system hardware operating parameters. You expressly acknowledge and agree that:
-* Operating hardware outside manufacturer specifications involves inherent risk. Altering system parameters may cause hardware instability, data loss, or hardware component damage.
-* Adjusting hardware settings may void manufacturer or system warranties. 
-* The developer assumes absolutely no responsibility or liability for voided warranties, hardware failure, or system instability.
+## 3. Distribution
+You may redistribute original, unmodified setup packages (`CurveSmith_Setup.exe`) or link directly to the official GitHub repository (`https://github.com/marekoth/CurveSmith`). You may not repackage the binaries, distribute modified builds, or host the installer on platforms that require paid subscriptions, commercial access fees, or bundled third-party installers.
 
-## 5. Limitation of Liability
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. IN NO EVENT SHALL THE DEVELOPER BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES (INCLUDING LOSS OF DATA, HARDWARE DAMAGE, OR SYSTEM DOWNTIME) ARISING FROM THE USE OF THIS SOFTWARE.
+## 4. Low-Level Hardware & Overclocking Disclaimer
+CurveSmith executes low-level kernel driver calls (Ring-0) to modify AMD Ryzen SMU tables, Curve Optimizer voltage offsets, telemetry flags, and core clock frequencies. 
+
+By executing this software, you expressly acknowledge and agree that:
+- Operating hardware components outside factory specifications, recommended voltage boundaries, or default boost ceilings may permanently void processor and motherboard warranties.
+- Adjusting voltage curves, dynamic offsets, or static frequencies carries inherent physical risks, including but not limited to: accelerated silicon degradation, thermal throttling, permanent hardware damage (CPU/motherboard burnout), power supply trigger trips, operating system corruption, sudden system crashes (BSOD), and irreversible data loss.
+- Silicon quality varies per sample. Frequencies or negative Curve Optimizer offsets that are stable on one processor may cause immediate instability or hardware failure on another.
+
+## 5. Limitation of Liability & Sole Assumption of Risk
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
+
+IN NO EVENT SHALL THE DEVELOPER (`marekoth`) OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; SYSTEM DOWNTIME; HARDWARE REPLACEMENT COSTS; OR PHYSICAL DAMAGE TO COMPONENTS) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT ARISING IN ANY WAY OUT OF THE USE OR MISUSE OF THIS SOFTWARE.
+
+YOU ASSUME COMPLETE AND SOLE RESPONSIBILITY FOR ANY AND ALL HARDWARE INSTABILITY, DATA INTEGRITY, AND PHYSICAL COMPONENT CONDITIONS RESULTING FROM THE OPERATION OF THIS SOFTWARE.
