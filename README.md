@@ -2,6 +2,10 @@
 
 A lightweight, automated Curve Optimizer (CO) calibrator and low-level SMU tuning utility for AMD Ryzen processors.
 
+<p align="center">
+  <img src="Assets/pbo_screen.png" alt="CurveSmith Calibration Dashboard" width="850">
+</p>
+
 Instead of spending an entire weekend manually tweaking offsets in BIOS and guessing which core crashed your system, CurveSmith dials in stable, per-core undervolts through direct hardware mailbox calls and targeted single-core stress routines.
 
 ## Why CurveSmith?
@@ -14,8 +18,34 @@ Instead of spending an entire weekend manually tweaking offsets in BIOS and gues
 - **Direct Hardware Mailbox (Ring-0):** Applies CO offsets and boost overrides live via the PawnIO kernel driver. No Ryzen Master background services or BIOS reboots needed between offset adjustments.
 - **Automated Crash & Reboot Resilience:** Finding silicon limits causes reboots by design. If the system crashes or drops a WHEA error mid-calibration, CurveSmith detects it upon reboot, registers the failing offset as a hard boundary, snaps back to the last verified safe baseline, and resumes testing automatically.
 - **Architecture-Specific Stress Engines:** Binds directly to matching AVX2 / AVX-512 workload binaries (Kagari for Zen 3, Kizuna for Zen 4, Komari for Zen 5 dual 512-bit) with core affinity pinning and load-shock cycles to expose instability instantly.
-- **Static Manual OC Mode:** Full-control fallback mode for non-X3D silicon to test static voltage and all-core frequency limits outside AMD FIT regulation.
 - **Bilingual UI (EN / TR):** Complete native interface in English and Turkish with system locale auto-detection and an instant toggle.
+
+---
+
+## Features & Modes
+
+### PBO Calibration & Profile Selection
+Select per-core target modes, profile slots, and test parameters prior to running automated sweeps.
+
+<p align="center">
+  <img src="Assets/pbo_selection_menu.png" alt="PBO Selection Menu" width="850">
+</p>
+
+### Silicon Quality & CPPC Inspection
+Reads hardware APIC IDs, SMU tables, and fused silicon rankings to prioritize strongest cores during calibration.
+
+<p align="center">
+  <img src="Assets/silicon_quality.png" alt="Silicon Quality Overview" width="850">
+</p>
+
+### Static Manual OC Mode
+Full-control fallback mode for non-X3D silicon to set fixed voltages and all-core frequency targets outside AMD FIT limits.
+
+<p align="center">
+  <img src="Assets/manual_oc.png" alt="Manual Overclocking Interface" width="850">
+</p>
+
+---
 
 ## How It Works
 
@@ -35,7 +65,7 @@ Instead of spending an entire weekend manually tweaking offsets in BIOS and gues
 
 1. Download the latest `CurveSmith_Setup.exe` from the Releases section.
 2. Run the installer with administrator privileges.
-3. Launch CurveSmith. If PawnIO is not installed on the system, the application will guide you through the one-click driver setup.
+3. Launch CurveSmith. If PawnIO is not installed on the system, the application will guide you through the driver setup.
 4. Select your target boost offset and start calibration.
 
 ## Disclaimer
